@@ -1,21 +1,18 @@
 import { useEffect, useRef } from "react";
 
-type P = { x: number; y: number; z: number; s: number };
+type P = { t: number; r: number; s: number; tw: number };
 
+/** Particles sampled around the classic heart curve, filled inward. */
 function buildHeart(count: number): P[] {
-  const pts: P[] = [];
-  for (let i = 0; i < count; i++) {
-    const t = Math.random() * Math.PI * 2;
-    const shrink = 0.55 + Math.random() * 0.45;
-    const x = 16 * Math.pow(Math.sin(t), 3);
-    const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-    const z = (Math.random() - 0.5) * 3.2;
-    pts.push({ x: x * shrink, y: y * shrink, z, s: 0.5 + Math.random() * 1.4 });
-  }
-  return pts;
+  return Array.from({ length: count }, () => ({
+    t: Math.random() * Math.PI * 2,
+    r: 0.35 + Math.pow(Math.random(), 0.55) * 0.65,
+    s: 0.5 + Math.random() * 1.5,
+    tw: Math.random() * Math.PI * 2,
+  }));
 }
 
-/** A slowly rotating particle heart, drawn on a 2D canvas. */
+/** A softly breathing heart of light behind the letter. */
 export function HeartCanvas() {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -25,14 +22,13 @@ export function HeartCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const pts = buildHeart(1400);
+    const pts = buildHeart(1600);
     let raf = 0;
     let w = 0;
     let h = 0;
-    let dpr = 1;
 
     const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       w = canvas.clientWidth;
       h = canvas.clientHeight;
       canvas.width = w * dpr;
@@ -44,44 +40,46 @@ export function HeartCanvas() {
 
     const pointer = { x: 0, y: 0 };
     const onMove = (e: PointerEvent) => {
-      pointer.x = (e.clientX / window.innerWidth - 0.5) * 0.5;
-      pointer.y = (e.clientY / window.innerHeight - 0.5) * 0.35;
+      pointer.x = (e.clientX / window.innerWidth - 0.5) * 26;
+      pointer.y = (e.clientY / window.innerHeight - 0.5) * 18;
     };
     window.addEventListener("pointermove", onMove);
 
-    let start = performance.now();
+    const start = performance.now();
     const draw = (now: number) => {
-      const t = (now - start) / 1000;
+      const time = (now - start) / 1000;
       const scrolled = window.scrollY / Math.max(window.innerHeight, 1);
       ctx.clearRect(0, 0, w, h);
 
-      const ay = Math.sin(t * 0.22 + scrolled * 1.6) * 0.5 + pointer.x * 0.9;
-      const ax = Math.sin(t * 0.18) * 0.12 + pointer.y * 0.5;
-      const pulse = 1 + Math.sin(t * 1.6) * 0.035;
-      const scale = (Math.min(w, h) / 46) * pulse * (1 + scrolled * 0.12);
-      const cx = w / 2;
-      const cy = h / 2;
-
-      const cosY = Math.cos(ay);
-      const sinY = Math.sin(ay);
-      const cosX = Math.cos(ax);
-      const sinX = Math.sin(ax);
+      const pulse = 1 + Math.sin(time * 1.5) * 0.04;
+      const scale = (Math.min(w, h) / 42) * pulse * (1 + scrolled * 0.18);
+      const cx = w / 2 + pointer.x;
+      const cy = h / 2 + pointer.y - Math.min(w, h) * 0.02;
+      const sway = Math.sin(time * 0.4 + scrolled * 2) * 0.05;
 
       for (const p of pts) {
-        let x = p.x * cosY + p.z * sinY;
-        let z = p.z * cosY - p.x * sinY;
-        let y = p.y * cosX - z * sinX;
-        z = z * cosX + p.y * sinX;
+        const t = p.t;
+        const hx = 16 * Math.pow(Math.sin(t), 3);
+        const hy = -(
+          13 * Math.cos(t) -
+          5 * Math.cos(2 * t) -
+          2 * Math.cos(3 * t) -
+          Math.cos(4 * t)
+        );
+        // fill inward toward the heart's centre
+        let x = hx * p.r;
+        let y = hy * p.r - 1.2 * (1 - p.r);
+        // gentle sway rotation
+        const rx = x * Math.cos(sway) - y * Math.sin(sway);
+        const ry = x * Math.sin(sway) + y * Math.cos(sway);
+        x = rx;
+        y = ry;
 
-        const persp = 320 / (320 - z * scale * 0.8);
-        const px = cx + x * scale * persp;
-        const py = cy + y * scale * persp;
-        const depth = (z + 5) / 10;
-        const r = p.s * persp * (0.6 + depth * 0.7);
-
+        const twinkle = 0.45 + 0.55 * (0.5 + 0.5 * Math.sin(time * 2 + p.tw));
+        const edge = p.r;
         ctx.beginPath();
-        ctx.arc(px, py, Math.max(r, 0.3), 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${344 + depth * 22}, 92%, ${58 + depth * 22}%, ${0.24 + depth * 0.6})`;
+        ctx.arc(cx + x * scale, cy + y * scale, Math.max(p.s * edge, 0.35), 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${348 - edge * 14}, 95%, ${62 + edge * 16}%, ${(0.14 + edge * 0.5) * twinkle})`;
         ctx.fill();
       }
       raf = requestAnimationFrame(draw);
@@ -99,7 +97,7 @@ export function HeartCanvas() {
     <canvas
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 h-full w-full opacity-80"
+      className="pointer-events-none fixed inset-0 h-full w-full opacity-70"
     />
   );
 }
