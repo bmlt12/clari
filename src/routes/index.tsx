@@ -99,7 +99,7 @@ function LoveLetter() {
             </span>
 
             <h2 className="text-center font-script text-4xl text-rose-glow sm:text-5xl">
-              My Darling…
+              My Darling Clarita…
             </h2>
 
             <div className="mt-10 space-y-7">
