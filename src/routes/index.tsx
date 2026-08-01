@@ -7,16 +7,17 @@ import { TapHeart } from "@/components/TapHeart";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Victoria — You Are My Universe" },
+      { title: "Clarita — Queen Of My Universe" },
       {
         name: "description",
         content:
-          "A love letter written in starlight for Victoria: every heartbeat became music, every breath became poetry. Forever yours.",
+          "A love letter written in starlight for Clarita: happy girlfriend's day, my queen. You attract, you never chase. Greatness in your exams and always.",
       },
-      { property: "og:title", content: "Victoria — You Are My Universe" },
+      { property: "og:title", content: "Clarita — Queen Of My Universe" },
       {
         property: "og:description",
-        content: "A love letter written in starlight for Victoria. Forever yours, Nana Yaw.",
+        content:
+          "Happy girlfriend's day, Clarita. A letter about how beautiful you are, how lucky I am, and the greatness waiting for you.",
       },
     ],
   }),
@@ -24,9 +25,12 @@ export const Route = createFileRoute("/")({
 });
 
 const letter = [
-  "My love, before you, life was a quiet song waiting for its melody. Then you came, and suddenly every heartbeat became music, every breath became poetry. You are not just the light in my world — you are the world itself. My days begin with the thought of you and end with the dream of us, wrapped in forever.",
-  "You are the gentle sunrise that paints my mornings with hope, the steady moon that guards my nights with peace. In your eyes I see galaxies; in your smile, I find home. You are my anchor when storms rage, my wings when I long to fly, and my safe place when the world feels too heavy.",
-  "I promise you, with every fibre of my being, that my love will never fade. It will grow stronger with each sunrise, deeper with each sunset, and eternal with every star that shines above us. You are my miracle, my destiny, my forever.",
+  "My Clarita, before you, life was a quiet song waiting for its melody. Then you walked in — soft-spoken, breathtaking, impossibly you — and every heartbeat became music, every breath became poetry. People talk about beauty like it's only a face. But yours is in your laugh, in the way your eyes go bright when you're excited, in the calm you carry into rooms that don't deserve you. You are beautiful in a way that makes me quiet.",
+  "And I know exactly what I have. Out of everyone in this whole wide world, you chose me — and I will never call that anything but luck. I'm the lucky one, Clarita. The one who gets your good mornings, your voice notes, your stubborn opinions, your softness. If loving you is a privilege, then let me spend forever being grateful for it.",
+  "Never forget who you are: you are a queen in your own world. Queens don't chase — they attract. You don't run after anything that's meant for you; you stand tall, you shine, and life bends toward you. Never lower your crown to be chosen, my love. Anything that requires you to beg for it was never worthy of you in the first place. I fell for the woman who knows her worth — please never unlearn that.",
+  "And can I tell you something funny? Sometimes when I'm being stubborn — you know how I get — the way you handle me, that gentle scolding wrapped in love, is exactly how my granny used to do it. My granny is called Adwoa. And your soul name is Adwoa too. Tell me that's a coincidence. Two Adwoas, both sent to love the stubbornness out of me. I think heaven planned that.",
+  "So today, on girlfriend's day, I'm not just saying happy girlfriend's day — I'm saying thank you for being mine. And as your exams come, hear me clearly: you will excel. That brilliant head of yours will remember everything it needs to. Go in calm, come out shining. I'm praying for you, cheering for you, and already proud of you.",
+  "I promise you, with every fibre of my being, my love will never fade. It will grow stronger with each sunrise, deeper with each sunset, and eternal with every star above us. You are my miracle, my queen, my Adwoa, my forever.",
 ];
 
 function LoveLetter() {
