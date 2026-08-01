@@ -77,8 +77,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Victoria — You Are My Universe" },
-      { name: "description", content: "A love letter written in starlight, for Victoria." },
+      { title: "Clarita — You Are My Universe" },
+      { name: "description", content: "A love letter written in starlight, for Clarita." },
       { name: "author", content: "Nana Yaw" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
