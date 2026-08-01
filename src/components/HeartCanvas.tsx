@@ -6,8 +6,8 @@ type P = { t: number; r: number; s: number; tw: number };
 function buildHeart(count: number): P[] {
   return Array.from({ length: count }, () => ({
     t: Math.random() * Math.PI * 2,
-    r: 0.35 + Math.pow(Math.random(), 0.55) * 0.65,
-    s: 0.5 + Math.random() * 1.5,
+    r: 0.28 + Math.pow(Math.random(), 0.28) * 0.72,
+    s: 0.35 + Math.random() * 0.95,
     tw: Math.random() * Math.PI * 2,
   }));
 }
@@ -22,7 +22,7 @@ export function HeartCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const pts = buildHeart(1600);
+    const pts = buildHeart(4200);
     let raf = 0;
     let w = 0;
     let h = 0;
@@ -78,8 +78,8 @@ export function HeartCanvas() {
         const twinkle = 0.45 + 0.55 * (0.5 + 0.5 * Math.sin(time * 2 + p.tw));
         const edge = p.r;
         ctx.beginPath();
-        ctx.arc(cx + x * scale, cy + y * scale, Math.max(p.s * edge, 0.35), 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${348 - edge * 14}, 95%, ${62 + edge * 16}%, ${(0.14 + edge * 0.5) * twinkle})`;
+        ctx.arc(cx + x * scale, cy + y * scale, Math.max(p.s * (0.5 + edge), 0.3), 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${348 - edge * 14}, 95%, ${62 + edge * 16}%, ${(0.1 + Math.pow(edge, 3) * 0.62) * twinkle})`;
         ctx.fill();
       }
       raf = requestAnimationFrame(draw);
