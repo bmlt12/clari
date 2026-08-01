@@ -9,7 +9,7 @@ function buildHeart(count: number): P[] {
     const shrink = 0.55 + Math.random() * 0.45;
     const x = 16 * Math.pow(Math.sin(t), 3);
     const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-    const z = (Math.random() - 0.5) * 9;
+    const z = (Math.random() - 0.5) * 3.2;
     pts.push({ x: x * shrink, y: y * shrink, z, s: 0.5 + Math.random() * 1.4 });
   }
   return pts;
@@ -55,8 +55,8 @@ export function HeartCanvas() {
       const scrolled = window.scrollY / Math.max(window.innerHeight, 1);
       ctx.clearRect(0, 0, w, h);
 
-      const ay = t * 0.35 + scrolled * 2.2 + pointer.x * 2;
-      const ax = Math.sin(t * 0.25) * 0.22 + pointer.y * 1.2;
+      const ay = Math.sin(t * 0.22 + scrolled * 1.6) * 0.5 + pointer.x * 0.9;
+      const ax = Math.sin(t * 0.18) * 0.12 + pointer.y * 0.5;
       const pulse = 1 + Math.sin(t * 1.6) * 0.035;
       const scale = (Math.min(w, h) / 46) * pulse * (1 + scrolled * 0.12);
       const cx = w / 2;
