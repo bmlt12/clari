@@ -44,13 +44,13 @@ function LoveLetter() {
       <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
         <Reveal>
           <p className="font-body text-[0.7rem] tracking-[0.55em] text-muted-foreground uppercase">
-            For the one who holds my whole heart
+            Happy Girlfriend's Day, my queen
           </p>
         </Reveal>
 
         <Reveal delay={200}>
           <h1 className="text-gradient-rose mt-8 font-display text-6xl leading-[0.95] font-light tracking-[0.08em] sm:text-8xl md:text-[9rem]">
-            Victoria
+            Clarita
           </h1>
         </Reveal>
 
@@ -63,7 +63,7 @@ function LoveLetter() {
 
         <Reveal delay={560}>
           <p className="mt-8 max-w-md font-script text-3xl text-rose-glow sm:text-4xl">
-            You are my universe.
+            You are my universe — and I'm the lucky one.
           </p>
         </Reveal>
 
