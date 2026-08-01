@@ -97,7 +97,7 @@ export function HeartCanvas() {
     <canvas
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 h-full w-full opacity-70"
+      className="pointer-events-none fixed inset-0 h-full w-full opacity-95"
     />
   );
 }
