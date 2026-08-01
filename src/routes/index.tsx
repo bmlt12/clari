@@ -135,9 +135,9 @@ function LoveLetter() {
         <Reveal delay={260}>
           <div className="mt-14 grid max-w-3xl gap-5 sm:grid-cols-3">
             {[
-              "Enjoy your day, my love",
-              "I love you — endlessly",
-              "The luckiest person alive, because of you",
+              "Happy Girlfriend's Day, my queen",
+              "Attract, never chase — you are the prize",
+              "Greatness in your exams, my Adwoa",
             ].map((line, i) => (
               <div
                 key={line}
@@ -152,7 +152,7 @@ function LoveLetter() {
 
         <Reveal delay={500}>
           <p className="mt-16 font-script text-2xl text-rose-glow">
-            Happy always, my forever bae 😘
+            I love you endlessly, my forever bae 😘
           </p>
         </Reveal>
       </section>
