@@ -3,10 +3,10 @@ import { useState } from "react";
 const reasons = [
   { title: "Your laugh", body: "It rearranges my whole day into something lighter." },
   { title: "Your calm", body: "You walk into noise and it softens. That's a gift, Adwoa." },
-  { title: "Your mind", body: "Brilliant, stubborn, curious — the exams don't stand a chance." },
+  { title: "Your mind", body: "Brilliant, stubborn, curious  the exams don't stand a chance." },
   { title: "Your worth", body: "You attract. You never chase. Queens don't beg." },
   { title: "Your softness", body: "You healed a heart you didn't break. I'll never forget that." },
-  { title: "Your name", body: "Adwoa — the same name that loved the stubbornness out of me before." },
+  { title: "Your name", body: "Adwoa the same name that loved the stubbornness out of me before." },
 ];
 
 /** Tap-to-open cards of small reasons. */
