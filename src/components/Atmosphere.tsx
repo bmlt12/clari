@@ -7,8 +7,9 @@ export function FloatingHearts({ count = 14 }: { count?: number }) {
   );
 
   useEffect(() => {
+    const n = window.matchMedia("(max-width: 640px)").matches ? Math.round(count * 0.6) : count;
     setSeeds(
-      Array.from({ length: count }, () => ({
+      Array.from({ length: n }, () => ({
         left: Math.random() * 100,
         delay: Math.random() * 14,
         dur: 14 + Math.random() * 12,
@@ -16,6 +17,7 @@ export function FloatingHearts({ count = 14 }: { count?: number }) {
       })),
     );
   }, [count]);
+
 
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 overflow-hidden">

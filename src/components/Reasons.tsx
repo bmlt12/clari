@@ -14,17 +14,21 @@ export function Reasons() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <div className="grid w-full max-w-3xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid w-full max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
       {reasons.map((r, i) => (
         <button
           key={r.title}
-          onClick={() => setOpen(open === i ? null : i)}
-          className="glass-card group rounded-3xl px-6 py-8 text-left transition-all duration-500 hover:-translate-y-1 hover:border-rose"
+          onClick={() => {
+            setOpen(open === i ? null : i);
+            navigator.vibrate?.(12);
+          }}
+          aria-expanded={open === i}
+          className="glass-card group min-h-[88px] rounded-3xl px-5 py-6 text-left transition-all duration-500 active:scale-[0.98] sm:px-6 sm:py-8 sm:hover:-translate-y-1 sm:hover:border-rose"
         >
           <span className="font-body text-[0.6rem] tracking-[0.35em] text-gold uppercase">
             {String(i + 1).padStart(2, "0")}
           </span>
-          <p className="mt-3 font-script text-2xl text-rose-glow">{r.title}</p>
+          <p className="mt-2 font-script text-2xl text-rose-glow sm:mt-3">{r.title}</p>
           <p
             className="font-display text-base leading-relaxed font-light text-foreground/85 transition-all duration-500"
             style={{

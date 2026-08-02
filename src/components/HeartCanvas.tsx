@@ -22,13 +22,15 @@ export function HeartCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const pts = buildHeart(4200);
+    const isSmall = window.matchMedia("(max-width: 640px)").matches;
+    const hasHover = window.matchMedia("(hover: hover)").matches;
+    const pts = buildHeart(isSmall ? 2000 : 4200);
     let raf = 0;
     let w = 0;
     let h = 0;
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, isSmall ? 1.5 : 2);
       w = canvas.clientWidth;
       h = canvas.clientHeight;
       canvas.width = w * dpr;
@@ -43,7 +45,7 @@ export function HeartCanvas() {
       pointer.x = (e.clientX / window.innerWidth - 0.5) * 26;
       pointer.y = (e.clientY / window.innerHeight - 0.5) * 18;
     };
-    window.addEventListener("pointermove", onMove);
+    if (hasHover) window.addEventListener("pointermove", onMove);
 
     const start = performance.now();
     const draw = (now: number) => {
@@ -52,7 +54,7 @@ export function HeartCanvas() {
       ctx.clearRect(0, 0, w, h);
 
       const pulse = 1 + Math.sin(time * 1.5) * 0.04;
-      const scale = (Math.min(w, h) / 42) * pulse * (1 + scrolled * 0.18);
+      const scale = (Math.min(w, h) / (isSmall ? 34 : 42)) * pulse * (1 + scrolled * 0.18);
       const cx = w / 2 + pointer.x;
       const cy = h / 2 + pointer.y - Math.min(w, h) * 0.02;
       const sway = Math.sin(time * 0.4 + scrolled * 2) * 0.05;
