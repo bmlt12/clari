@@ -94,76 +94,75 @@ function LoveLetter() {
 
 
       {/* The letter */}
-      <section className="relative flex min-h-screen items-center justify-center px-6 py-28">
+      <section className="relative flex items-center justify-center px-4 py-20 sm:min-h-screen sm:px-6 sm:py-28">
         <Reveal className="w-full max-w-2xl">
-          <article className="glass-card relative rounded-4xl px-7 py-14 sm:px-14 sm:py-16">
+          <article className="glass-card relative rounded-4xl px-5 py-12 sm:px-14 sm:py-16">
             <span
               aria-hidden="true"
-              className="absolute -top-6 left-1/2 -translate-x-1/2 text-4xl text-rose"
+              className="absolute -top-5 left-1/2 -translate-x-1/2 text-3xl text-rose sm:-top-6 sm:text-4xl"
               style={{ animation: "float-slow 4.5s ease-in-out infinite" }}
             >
               ❤
             </span>
 
-            <h2 className="text-center font-script text-4xl text-rose-glow sm:text-5xl">
+            <h2 className="text-center font-script text-3xl text-rose-glow sm:text-5xl">
               My Darling Clarita…
             </h2>
 
-            <div className="mt-10 space-y-7">
+            <div className="mt-8 space-y-6 sm:mt-10 sm:space-y-7">
               {letter.map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 24)}
-                  className="font-display text-lg leading-[1.85] font-light text-foreground/90 sm:text-xl"
+                  className="font-display text-[1.05rem] leading-[1.9] font-light text-foreground/90 sm:text-xl sm:leading-[1.85]"
                 >
                   {paragraph}
                 </p>
               ))}
             </div>
 
-            <div className="mt-12 border-t border-border pt-8 text-right">
-              <p className="font-display text-base tracking-wide text-muted-foreground italic">
+            <div className="mt-10 border-t border-border pt-7 text-right sm:mt-12 sm:pt-8">
+              <p className="font-display text-[0.95rem] tracking-wide text-muted-foreground italic sm:text-base">
                 Forever yours, in this life and beyond…
               </p>
-              <p className="mt-3 font-script text-3xl text-gold">Nana Yaw</p>
+              <p className="mt-3 font-script text-2xl text-gold sm:text-3xl">Nana Yaw</p>
             </div>
           </article>
         </Reveal>
       </section>
 
       {/* Little reasons */}
-      <section className="relative flex flex-col items-center justify-center px-6 py-24">
+      <section className="relative flex flex-col items-center justify-center px-4 py-16 sm:px-6 sm:py-24">
         <Reveal>
-          <h2 className="text-gradient-rose font-display text-4xl font-light tracking-[0.18em] uppercase sm:text-5xl">
+          <h2 className="text-gradient-rose text-center font-display text-3xl font-light tracking-[0.14em] uppercase sm:text-5xl sm:tracking-[0.18em]">
             Little reasons
           </h2>
-          <p className="mt-4 text-center font-body text-[0.65rem] tracking-[0.4em] text-muted-foreground uppercase">
+          <p className="mt-3 text-center font-body text-[0.6rem] tracking-[0.35em] text-muted-foreground uppercase sm:mt-4 sm:text-[0.65rem] sm:tracking-[0.4em]">
             Six of a thousand
           </p>
         </Reveal>
-        <Reveal delay={220} className="mt-12 flex justify-center">
+        <Reveal delay={220} className="mt-8 flex w-full justify-center sm:mt-12">
           <Reasons />
         </Reveal>
       </section>
 
       {/* Sealed P.S. */}
-      <section className="relative flex flex-col items-center justify-center px-6 py-24">
-        <Reveal className="flex justify-center">
+      <section className="relative flex flex-col items-center justify-center px-4 py-16 sm:px-6 sm:py-24">
+        <Reveal className="flex w-full justify-center">
           <SealedNote />
         </Reveal>
       </section>
 
       {/* Closing */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-6 py-28 text-center">
-
+      <section className="relative flex min-h-[100svh] flex-col items-center justify-center px-4 py-20 text-center sm:px-6 sm:py-28">
         <Reveal>
-          <h2 className="font-display text-4xl font-light tracking-[0.28em] text-foreground uppercase sm:text-6xl">
+          <h2 className="font-display text-3xl font-light tracking-[0.22em] text-foreground uppercase sm:text-6xl sm:tracking-[0.28em]">
             Forever
           </h2>
-          <h2 className="text-gradient-rose mt-2 font-script text-5xl sm:text-7xl">& Always</h2>
+          <h2 className="text-gradient-rose mt-2 font-script text-4xl sm:text-7xl">& Always</h2>
         </Reveal>
 
         <Reveal delay={260}>
-          <div className="mt-14 grid max-w-3xl gap-5 sm:grid-cols-3">
+          <div className="mt-10 grid max-w-3xl gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-5">
             {[
               "Happy Girlfriend's Day, my queen",
               "Attract, never chase — you are the prize",
@@ -171,7 +170,7 @@ function LoveLetter() {
             ].map((line, i) => (
               <div
                 key={line}
-                className="glass-card rounded-3xl px-6 py-10 font-display text-lg leading-relaxed font-light"
+                className="glass-card rounded-3xl px-5 py-7 font-display text-base leading-relaxed font-light sm:px-6 sm:py-10 sm:text-lg"
                 style={{ animation: `float-slow ${5 + i}s ease-in-out ${i * 0.4}s infinite` }}
               >
                 {line}
@@ -181,11 +180,12 @@ function LoveLetter() {
         </Reveal>
 
         <Reveal delay={500}>
-          <p className="mt-16 font-script text-2xl text-rose-glow">
+          <p className="mt-12 max-w-[20rem] font-script text-xl leading-snug text-rose-glow sm:mt-16 sm:max-w-none sm:text-2xl">
             I love you endlessly, my forever bae 😘
           </p>
         </Reveal>
       </section>
+
     </main>
   );
 }
