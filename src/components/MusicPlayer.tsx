@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Music, Pause } from "lucide-react";
-import musicAsset from "@/public/music.mp3.asset.json";
+import musicAsset from "@/assets/music.mp3.asset.json";
 
 /** Background song with a gentle, always-visible control. */
 export function MusicPlayer() {
