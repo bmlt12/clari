@@ -8,6 +8,7 @@ export function TapHeart() {
 
   const tap = useCallback(() => {
     const now = Date.now();
+    navigator.vibrate?.([10, 30, 14]);
     const next: Burst[] = Array.from({ length: 12 }, (_, i) => ({
       id: now + i,
       x: (Math.random() - 0.5) * 120,
@@ -27,11 +28,12 @@ export function TapHeart() {
       <button
         onClick={tap}
         aria-label="Tap the heart"
-        className="relative text-6xl leading-none text-rose transition-transform duration-300 active:scale-90 sm:text-7xl"
-        style={{ animation: "breathe 2.8s ease-in-out infinite" }}
+        className="relative flex size-24 items-center justify-center text-6xl leading-none text-rose transition-transform duration-300 select-none active:scale-90 sm:size-28 sm:text-7xl"
+        style={{ animation: "breathe 2.8s ease-in-out infinite", touchAction: "manipulation" }}
       >
         ❤
       </button>
+
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         {bursts.map((b) => (
