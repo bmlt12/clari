@@ -3,6 +3,9 @@ import { HeartCanvas } from "@/components/HeartCanvas";
 import { FloatingHearts, Reveal } from "@/components/Atmosphere";
 import { MusicPlayer } from "@/components/MusicPlayer";
 import { TapHeart } from "@/components/TapHeart";
+import { Reasons } from "@/components/Reasons";
+import { SealedNote } from "@/components/SealedNote";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -126,8 +129,31 @@ function LoveLetter() {
         </Reveal>
       </section>
 
+      {/* Little reasons */}
+      <section className="relative flex flex-col items-center justify-center px-6 py-24">
+        <Reveal>
+          <h2 className="text-gradient-rose font-display text-4xl font-light tracking-[0.18em] uppercase sm:text-5xl">
+            Little reasons
+          </h2>
+          <p className="mt-4 text-center font-body text-[0.65rem] tracking-[0.4em] text-muted-foreground uppercase">
+            Six of a thousand
+          </p>
+        </Reveal>
+        <Reveal delay={220} className="mt-12 flex justify-center">
+          <Reasons />
+        </Reveal>
+      </section>
+
+      {/* Sealed P.S. */}
+      <section className="relative flex flex-col items-center justify-center px-6 py-24">
+        <Reveal className="flex justify-center">
+          <SealedNote />
+        </Reveal>
+      </section>
+
       {/* Closing */}
       <section className="relative flex min-h-screen flex-col items-center justify-center px-6 py-28 text-center">
+
         <Reveal>
           <h2 className="font-display text-4xl font-light tracking-[0.28em] text-foreground uppercase sm:text-6xl">
             Forever
