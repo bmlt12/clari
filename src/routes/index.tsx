@@ -47,36 +47,36 @@ function LoveLetter() {
       <MusicPlayer />
 
       {/* Opening */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
+      <section className="relative flex min-h-[100svh] flex-col items-center justify-center px-5 py-16 text-center sm:px-6">
         <Reveal>
-          <p className="font-body text-[0.7rem] tracking-[0.55em] text-muted-foreground uppercase">
+          <p className="font-body text-[0.6rem] leading-relaxed tracking-[0.35em] text-muted-foreground uppercase sm:text-[0.7rem] sm:tracking-[0.55em]">
             Happy Girlfriend's Day, my queen
           </p>
         </Reveal>
 
         <Reveal delay={200}>
-          <h1 className="text-gradient-rose mt-8 font-display text-6xl leading-[0.95] font-light tracking-[0.08em] sm:text-8xl md:text-[9rem]">
+          <h1 className="text-gradient-rose mt-6 font-display text-[3.4rem] leading-[0.95] font-light tracking-[0.06em] sm:mt-8 sm:text-8xl sm:tracking-[0.08em] md:text-[9rem]">
             Clarita
           </h1>
         </Reveal>
 
         <Reveal delay={420}>
           <div
-            className="mx-auto mt-8 h-px w-40 origin-left bg-gradient-to-r from-transparent via-gold to-transparent"
+            className="mx-auto mt-6 h-px w-32 origin-left bg-gradient-to-r from-transparent via-gold to-transparent sm:mt-8 sm:w-40"
             style={{ animation: "shimmer-line 2s var(--ease-silk) 0.6s both" }}
           />
         </Reveal>
 
         <Reveal delay={560}>
-          <p className="mt-8 max-w-md font-script text-3xl text-rose-glow sm:text-4xl">
+          <p className="mt-6 max-w-[19rem] font-script text-[1.75rem] leading-snug text-rose-glow sm:mt-8 sm:max-w-md sm:text-4xl">
             You are my universe — and I'm the lucky one.
           </p>
         </Reveal>
 
         <Reveal delay={720}>
-          <div className="mt-10 flex flex-col items-center gap-4">
+          <div className="mt-6 flex flex-col items-center gap-2 sm:mt-10 sm:gap-4">
             <TapHeart />
-            <p className="font-body text-xs tracking-[0.3em] text-muted-foreground uppercase">
+            <p className="font-body text-[0.6rem] tracking-[0.3em] text-muted-foreground uppercase sm:text-xs">
               Tap the heart
             </p>
           </div>
@@ -84,13 +84,14 @@ function LoveLetter() {
 
         <Reveal delay={900}>
           <p
-            className="mt-16 font-body text-[0.65rem] tracking-[0.4em] text-muted-foreground uppercase"
+            className="mt-10 font-body text-[0.6rem] tracking-[0.4em] text-muted-foreground uppercase sm:mt-16 sm:text-[0.65rem]"
             style={{ animation: "float-slow 3s ease-in-out infinite" }}
           >
             Scroll down ↓
           </p>
         </Reveal>
       </section>
+
 
       {/* The letter */}
       <section className="relative flex min-h-screen items-center justify-center px-6 py-28">
